@@ -1,0 +1,23 @@
+function splitByTitle()
+{
+ var column = SpreadsheetApp.getActiveRange();
+ column.splitTextToColumns('","title"');
+};
+ 
+function splitByName()
+{
+ var column = SpreadsheetApp.getActiveRange();
+ column.splitTextToColumns('name":"');
+}
+
+function RemoveDuplicates() {
+ var spreadsheet = SpreadsheetApp.getActive();
+ spreadsheet.getActiveRange().removeDuplicates().activate();
+};
+
+function makeRowsEqualToNumber() {
+  var spreadsheet = SpreadsheetApp.getActive();
+  var data = spreadsheet.getActiveRange().getValue();
+  spreadsheet.getActiveSheet().insertRowsAfter(spreadsheet.getActiveRange().getLastRow(), data);
+  spreadsheet.getActiveRange().offset(spreadsheet.getActiveRange().getNumRows(), 0, 1, spreadsheet.getActiveRange().getNumColumns()).activate();
+};
